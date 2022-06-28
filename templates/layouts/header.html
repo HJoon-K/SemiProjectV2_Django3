@@ -1,0 +1,25 @@
+<header class="d-flex justify-content-between">
+    <h1><a href="{% url 'index' %}">Lorem Ipsum</a></h1>
+    <h1>
+        <button type="button" class="btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#loginmodal" >로그인</button>
+        <button type="button" class="btn btn-primary"
+        data-bs-toggle="modal" data-bs-target="#joinmodal" >회원가입</button>
+    </h1>
+</header>
+<nav class="nav navbar-expand navbar-dark bg-dark py-2 fw-bold">
+    <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+            <a class="nav-link  active"  href="{% url 'intro' %}">프로젝트 소개</a></li>
+        <li class="nav-item">
+            <a class="nav-link " href="{% url 'agree' %}">회원가입</a></li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/board/list.html">게시판</a></li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/pds/list.html">자료실</a></li>
+        <li class="nav-item">
+            <a class="nav-link"  href="/gallery/list.html">갤러리</a></li>
+       <li class="nav-item">
+            <a class="nav-link"  href="{% url 'admin' %}">관리자</a></li>
+    </ul>
+</nav>

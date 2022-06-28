@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %} 세미프로젝트 메인 {% endblock %}
+
+{% block style %} {% endblock %}
+
+{% block contents %}
+  <div id="main">
+      <button type="button">버튼</button>
+      <button type="button" class="btn btn-danger">버튼</button>
+      <button type="button" class="btn btn-success">버튼</button>
+      <button type="button" class="btn btn-warning">버튼</button>
+      <button type="button" class="btn btn-primary">버튼</button>
+  </div>
+{% endblock %}
+{% block script %}
+  <script src="/js/vendor/bs5/bootstrap.bundle.min.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+{% endblock %}

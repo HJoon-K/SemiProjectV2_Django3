@@ -1,0 +1,41 @@
+<div id="loginmodal" class="fade modal" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title fw-bold" >로그인</h4>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">닫기</button>
+          </div>
+          <div class="modal-body">
+              <form id="loginfrm" name="loginfrm" method="post">
+                <div class="mb-3 row">
+                    <label for="userid" class="col-sm-3 text-end col-form-label">아이디</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="userid">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="password" class="col-sm-3 text-end col-form-label">비밀번호</label>
+                    <div class="col-sm-8">
+                      <input type="password" class="form-control" id="password">
+                    </div>
+                </div>
+
+
+                <div class="form-check">
+                      <label class="col-3"></label>
+                      <div class="col-8">
+                          <input class="form-check-input " type="checkbox" value="" id="autolgn">
+                          <label class="form-check-label" for="autolgn">
+                            로그인 상태유지
+                          </label>
+                      </div>
+                </div>
+             </form>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-danger text-white" data-bs-dismiss="modal">로그인</button>
+            <button type="button" class="btn btn-warning">아이디/비밀번호 찾기</button>
+          </div>
+        </div>
+      </div>
+</div>
