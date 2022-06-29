@@ -277,19 +277,19 @@
         }
     });
 
-    {#// 아이디 중복검사#}
-    {#const userid = document.querySelector('#userid');#}
-    {##}
-    {#userid.addEventListener('blur', () => {#}
-    {#    // alert('사용중인 아이디입니다')#}
-    {#    let qry = '?userid=' + userid.value;#}
-    {#    fetch('{% url 'useird' %}' + qry)#}
-    {#        .then(response => response.text())#}
-    {#        .then(text => setUserid(text));#}
-    {#});#}
-    {##}
-    {#const setUserid = (userid) => {#}
-    {#    console.log(userid)#}
-    {#};#}
+    // 아이디 중복검사
+    const userid = document.querySelector('#userid');
+
+    userid.addEventListener('blur', () => {
+        // alert('사용중인 아이디입니다')
+        let qry = '?userid=' + userid.value;
+        fetch('{% url 'userid' %}' + qry)
+            .then(response => response.text())
+            .then(text => setUserid(text));
+    });
+
+    const setUserid = (userid) => {
+        console.log(userid)
+    };
 </script>
 {% endblock %}

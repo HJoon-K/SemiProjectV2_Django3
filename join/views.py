@@ -49,6 +49,7 @@ class CheckmeViews(View):
 
             # 쿠키 설정하고 페이지로로 전환
             res = redirect('/join/joinme')
+
             # dict 객체를 쿠키에 저장해 둠(유지시간 10분)
             # 응답객체.set_cookie(키, 값, 유지시간)
             res.set_cookie('tokens', tokens, max_age=60*10)
