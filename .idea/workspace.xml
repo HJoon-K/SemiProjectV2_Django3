@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment="최초버전" />
+    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment="최초버전">
+      <change afterPath="$PROJECT_DIR$/join/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0002_auto_20220629_1528.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0003_alter_member_userid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0004_auto_20220629_1529.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0005_remove_member_phone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0006_auto_20220629_1740.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/join/migrations/0007_auto_20220629_1741.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/join/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/join/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/join/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/join/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/join/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/join/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/join/joinme.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/join/joinme.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bigdata/Documents/Project/SemiProjectV2_Django3&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/bigdata/Documents/sample_data/zipcode_20130201(2)/zipcode_20130201(2).txt",
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\join" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\join" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\board" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\join" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static\imgs" />
     </key>
@@ -93,6 +107,10 @@
       <updated>1656376643094</updated>
       <workItem from="1656376645162" duration="29671000" />
       <workItem from="1656408210738" duration="177000" />
+      <workItem from="1656460310667" duration="1074000" />
+      <workItem from="1656462527944" duration="93000" />
+      <workItem from="1656462891726" duration="17805000" />
+      <workItem from="1656482048677" duration="12204000" />
     </task>
     <task id="LOCAL-00001" summary="최초버전">
       <created>1656408081651</created>
@@ -101,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656408081651</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="최초버전">
+      <created>1656460402021</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656460402021</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
