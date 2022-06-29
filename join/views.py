@@ -63,9 +63,9 @@ class CheckmeViews(View):
 class JoinmeViews(View):
     def get(self, request):
         # 쿠기에 저장된 객체를 불러올려면 request.COOKIES.get(이름)
-        # cookie = request.COOKIES.get('tokens')
-        # print(cookie)
-        cookie = '{}'
+        cookie = request.COOKIES.get('tokens')
+        print(cookie)
+        # cookie = '{}'
 
         return render(request, 'join/joinme.html', eval(cookie))
 
@@ -104,17 +104,17 @@ class ZipcodeViews(View):
         pass
 
 
-class UseridViews:
+class UseridViews(View):
     def get(self, request):
         # /join/userid?=***
         # 응답 메세지 => { 'result': 0 또는 1 }
-        form = request.GET.dict();
+        form = request.GET.dict()
 
-        result = Member.objects.get(userid=form['userid'])
-
+        result = Member.objects.filter(userid=form['userid'])
         print(result.value())
 
-        return render(request, 'join/agree.html')
+        json_data = serializers.serialize('json', result)
+        return HttpResponse(json_data, content_type='application/json')
 
     def post(self, request):
         pass

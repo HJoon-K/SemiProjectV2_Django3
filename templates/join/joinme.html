@@ -13,8 +13,8 @@
 {% block contents %}
 <div id="main" class="mt-2">
     <div class="d-flex justify-content-between">
-            <h2><i class="bi bi-people-fill"></i> 회원가입</h2>
-            <nav>
+        <h2><i class="bi bi-people-fill"></i> 회원가입</h2>
+        <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <span class="badge bg-success p-2">이용약관</span></li>
@@ -25,111 +25,111 @@
                 <li class="breadcrumb-item">
                     <span class="badge bg-light p-2 text-secondary">가입완료</span></li>
             </ol>
-            </nav>
-        </div>  <!-- page header -->
-        <div class="mx-5">
-            <h3><i class="bi bi-pencil"></i> 휴대폰 본인 확인</h3>
-            <small class="text-muted">회원정보는 개인정보 취급방침에 따라</small>
-            <hr>
-        </div>   <!-- subtitle -->
+        </nav>
+    </div>  <!-- page header -->
+    <div class="mx-5">
+        <h3><i class="bi bi-pencil"></i> 휴대폰 본인 확인</h3>
+        <small class="text-muted">회원정보는 개인정보 취급방침에 따라</small>
+        <hr>
+    </div>   <!-- subtitle -->
 
-        <div class="card card-body bg-light mx-5" >
-            <form name="joinfrm" method="post" class="text-danger">
-                {%  csrf_token %}
-                <h4 class="text-dark">일반회원</h4>
-                <div class="row mt-5">
-                    <label for="userid" class="col-form-label col-3 text-end">아이디</label>
-                    <div class="col-3">
-                        <input type="text" name="userid" id="userid" class="border-danger form-control" maxlength="18">
-                        <div>{{ check_userid }}</div>
+    <div class="card card-body bg-light mx-5" >
+        <form name="joinfrm" method="post" class="text-danger">
+            {%  csrf_token %}
+            <h4 class="text-dark">일반회원</h4>
+            <div class="row mt-5">
+                <label for="userid" class="col-form-label col-3 text-end">아이디</label>
+                <div class="col-3">
+                    <input type="text" name="userid" id="userid" class="border-danger form-control" maxlength="18">
+                    <div>{{ check_userid }}</div>
+                </div>
+                <label class="col-6 mt-2 lb2">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
+            </div> <!-- userid -->
+            <div class="row mt-3">
+                <label for="passwd" class="col-form-label col-3 text-end">비밀번호</label>
+                <div class="col-3">
+                    <input type="text" name="passwd" id="passwd" class="border-danger form-control" maxlength="18">
+                    <div id="pwdmsg"></div>
+                </div>
+                <label class="col-6 mt-2 lb2" style="font-size: 75%">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
+            </div> <!-- password -->
+            <div class="row mt-3">
+                <label for="repwd" class="col-form-label col-3 text-end">비밀번호 확인</label>
+                <div class="col-3">
+                    <input type="text" name="repwd" id="repwd" class="border-danger form-control" maxlength="18">
+                </div>
+                <label class="col-6 mt-2 lb2">이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</label>
+            </div> <!-- repassword -->
+            <div class="row mt-3">
+                <label for="name" class="col-form-label col-3 text-end">이름</label>
+                <div class="col-3">
+                    <input type="text" name="name" id="name" class="form-control border-danger" maxlength="18" readonly value="{{ name }}">
+                </div>
+            </div> <!-- name -->
+            <div class="row mt-3">
+                <label for="phone" class="col-form-label col-3 text-end">전화번호</label>
+                <div class="col-3">
+                    <input type="text" name="phone" id="phone" class="border-danger form-control" maxlength="18" readonly value="{{ phone }}">
+                </div>
+            </div> <!-- phone -->
+            <div class="row mt-3">
+                <label for="zip1" class="col-form-label col-3 text-end">우편번호</label>
+                <div class="d-flex flex-row col-6">
+                    <input type="text" name="zip1" id="zip1" class="border-danger form-control" readonly>
+                    <span class="col-form-label">&nbsp;-&nbsp;</span>
+                    <input type="text" name="zip2" id="zip2" class="border-danger form-control"  readonly value="{{ zip1 }}">&nbsp;&nbsp;
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#zipmodal"><i class="bi bi-question-circle" ></i> 우편번호 검색</button>
+                </div>
+            </div> <!-- zipcode  -->
+            <div class="row mt-3">
+                <label for="addr1" class="col-form-label col-3 text-end">주소</label>
+                <div class="col-6">
+                    <input type="text" name="addr1" id="addr1" class="border-danger form-control"  readonly>
+                    <input type="text" name="addr2" id="addr2" class="border-danger form-control mt-2">
+                </div>
+            </div> <!-- address -->
+            <div class="row mt-3">
+                <label for="email1" class="col-form-label col-3 text-end">전자우편주소</label>
+                <div class="d-flex flex-row col-7">
+                    <div class="input-group">
+                        <input type="text" name="email1" id="email1" class="border-danger form-control" >
+                        <span class="input-group-text border-danger">&#64;</span>
+                        <input type="text" name="email2" id="email2" class="border-danger form-control" readonly>
                     </div>
-                    <label class="col-6 mt-2 lb2">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
-                </div> <!-- userid -->
-                <div class="row mt-3">
-                    <label for="passwd" class="col-form-label col-3 text-end">비밀번호</label>
-                    <div class="col-3">
-                        <input type="text" name="passwd" id="passwd" class="border-danger form-control" maxlength="18">
-                        <div id="pwdmsg"></div>
-                    </div>
-                    <label class="col-6 mt-2 lb2" style="font-size: 75%">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
-                </div> <!-- password -->
-                <div class="row mt-3">
-                    <label for="repwd" class="col-form-label col-3 text-end">비밀번호 확인</label>
-                    <div class="col-3">
-                        <input type="text" name="repwd" id="repwd" class="border-danger form-control" maxlength="18">
-                    </div>
-                    <label class="col-6 mt-2 lb2">이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</label>
-                </div> <!-- repassword -->
-                <div class="row mt-3">
-                    <label for="name" class="col-form-label col-3 text-end">이름</label>
-                    <div class="col-3">
-                        <input type="text" name="name" id="name" class="form-control border-danger" maxlength="18" readonly value="{{ name }}">
-                    </div>
-                </div> <!-- name -->
-                <div class="row mt-3">
-                    <label for="phone" class="col-form-label col-3 text-end">전화번호</label>
-                    <div class="col-3">
-                        <input type="text" name="phone" id="phone" class="border-danger form-control" maxlength="18" readonly value="{{ phone }}">
-                    </div>
-                </div> <!-- phone -->
-                <div class="row mt-3">
-                    <label for="zip1" class="col-form-label col-3 text-end">우편번호</label>
-                    <div class="d-flex flex-row col-6">
-                        <input type="text" name="zip1" id="zip1" class="border-danger form-control" readonly>
-                        <span class="col-form-label">&nbsp;-&nbsp;</span>
-                        <input type="text" name="zip2" id="zip2" class="border-danger form-control"  readonly value="{{ zip1 }}">&nbsp;&nbsp;
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#zipmodal"><i class="bi bi-question-circle" ></i> 우편번호 검색</button>
-                    </div>
-                </div> <!-- zipcode  -->
-                <div class="row mt-3">
-                    <label for="addr1" class="col-form-label col-3 text-end">주소</label>
-                    <div class="col-6">
-                        <input type="text" name="addr1" id="addr1" class="border-danger form-control"  readonly>
-                        <input type="text" name="addr2" id="addr2" class="border-danger form-control mt-2">
-                    </div>
-                </div> <!-- address -->
-                <div class="row mt-3">
-                    <label for="email1" class="col-form-label col-3 text-end">전자우편주소</label>
-                    <div class="d-flex flex-row col-7">
-                        <div class="input-group">
-                            <input type="text" name="email1" id="email1" class="border-danger form-control" >
-                            <span class="input-group-text border-danger">&#64;</span>
-                            <input type="text" name="email2" id="email2" class="border-danger form-control" readonly>
-                        </div>
-                        <select class="form-select border-danger w-auto ms-2"   id="email3">
-                            <option>선택하세요</option>
-                            <option>gmail.com</option>
-                            <option>hotmail.com</option>
-                            <option>naver.com</option>
-                            <option>daum.com</option>
-                            <option>직접입력하기</option>
-                        </select>
-                    </div>
-                </div> <!-- email -->
-                <div class="row mt-3">
-                    <label class="col-form-label col-3 text-end">메일링 서비스</label>
-                    <div class="col-6 col-form-label">
-                        <input type="radio" name="mailing" id="mailing1" class="border-danger form-check-input"  value="yes">
-                        <label for="mailing1" class="form-check-label">수신동의</label>
+                    <select class="form-select border-danger w-auto ms-2"   id="email3">
+                        <option>선택하세요</option>
+                        <option>gmail.com</option>
+                        <option>hotmail.com</option>
+                        <option>naver.com</option>
+                        <option>daum.com</option>
+                        <option>직접입력하기</option>
+                    </select>
+                </div>
+            </div> <!-- email -->
+            <div class="row mt-3">
+                <label class="col-form-label col-3 text-end">메일링 서비스</label>
+                <div class="col-6 col-form-label">
+                    <input type="radio" name="mailing" id="mailing1" class="border-danger form-check-input"  value="yes">
+                    <label for="mailing1" class="form-check-label">수신동의</label>
 
-                        <input type="radio" name="mailing" id="mailing2" class="border-danger form-check-input"  value="no">
-                        <label for="mailing2" class="form-check-label">수신 미동의</label>
-                    </div>
-                </div> <!-- mailing -->
-                <div class="row mt-3">
-                    <label for="name" class="col-form-label col-3 text-end">자동가입방지</label>
-                    <div class="col-5">
-                        <div class="g-recaptcha" data-sitekey="6LdV86YgAAAAAPjlioYiGWSeYdsBvncDej6I0i-V"></div>
-                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
-                        <div class="text-danger">{{ error }}</div>
-                    </div>
-                </div> <!-- recaptcha -->
-                <div class="text-center m-3">
-                        <button type="button" class="btn btn-warning" id="nojoin"><i class="bi bi-x"> </i> 입력취소</button>
-                        <button type="button" class="btn btn-primary" id="okjoin"><i class="bi bi-check" ></i> 입력완료</button>
-                </div> <!-- // buttons -->
-            </form>
-        </div> <!-- member info -->
+                    <input type="radio" name="mailing" id="mailing2" class="border-danger form-check-input"  value="no">
+                    <label for="mailing2" class="form-check-label">수신 미동의</label>
+                </div>
+            </div> <!-- mailing -->
+            <div class="row mt-3">
+                <label for="name" class="col-form-label col-3 text-end">자동가입방지</label>
+                <div class="col-5">
+                    <div class="g-recaptcha" data-sitekey="6LdV86YgAAAAAPjlioYiGWSeYdsBvncDej6I0i-V"></div>
+                    <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+                    <div class="text-danger">{{ error }}</div>
+                </div>
+            </div> <!-- recaptcha -->
+            <div class="text-center m-3">
+                    <button type="button" class="btn btn-warning" id="nojoin"><i class="bi bi-x"> </i> 입력취소</button>
+                    <button type="button" class="btn btn-primary" id="okjoin"><i class="bi bi-check" ></i> 입력완료</button>
+            </div> <!-- // buttons -->
+        </form>
+    </div> <!-- member info -->
     <!-- 우편번호 찾기 모달 -->
     <div id="zipmodal" aria-hidden="true" class="modal"
          data-bs-backdrop="static" data-bs-keyboard="false">
@@ -277,16 +277,19 @@
         }
     });
 
-    // 아이디 중복검사
-    const userid = document.querySelector('#userid');
-
-
-    userid.addEventListener('blur', () => {
-        // alert('사용중인 아이디입니다')
-        let qry = '?userid=' + userid.value;
-        fetch('{% url 'useird' %}' + qry)
-            .then(response => response.text())
-            .then(text => setZipcode(text));
-    });
+    {#// 아이디 중복검사#}
+    {#const userid = document.querySelector('#userid');#}
+    {##}
+    {#userid.addEventListener('blur', () => {#}
+    {#    // alert('사용중인 아이디입니다')#}
+    {#    let qry = '?userid=' + userid.value;#}
+    {#    fetch('{% url 'useird' %}' + qry)#}
+    {#        .then(response => response.text())#}
+    {#        .then(text => setUserid(text));#}
+    {#});#}
+    {##}
+    {#const setUserid = (userid) => {#}
+    {#    console.log(userid)#}
+    {#};#}
 </script>
 {% endblock %}
