@@ -5,7 +5,7 @@
 {% block style %}
  <style>
     div label:first-child { font-weight: bold }
-    .lb2 { font-size: 75% }
+    .fs { font-size: 75% }
     #zip1, #zip2 { width: 70px}
  </style>
  {% endblock %}
@@ -41,24 +41,24 @@
                 <label for="userid" class="col-form-label col-3 text-end">아이디</label>
                 <div class="col-3">
                     <input type="text" name="userid" id="userid" class="border-danger form-control" maxlength="18">
-                    <div>{{ check_userid }}</div>
+                    <div id="uidmsg" class="text-primary fw-bold fs"></div>
                 </div>
-                <label class="col-6 mt-2 lb2">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
+                <label class="col-6 mt-2 fs">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
             </div> <!-- userid -->
             <div class="row mt-3">
                 <label for="passwd" class="col-form-label col-3 text-end">비밀번호</label>
                 <div class="col-3">
                     <input type="text" name="passwd" id="passwd" class="border-danger form-control" maxlength="18">
-                    <div id="pwdmsg"></div>
+                    <div id="pwdmsg" class="text-primary fs"></div>
                 </div>
-                <label class="col-6 mt-2 lb2" style="font-size: 75%">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
+                <label class="col-6 mt-2 fs" style="font-size: 75%">8~18자의 영문 소문자, 숫자, 특수기호(_)만 사용할 수 있습니다</label>
             </div> <!-- password -->
             <div class="row mt-3">
                 <label for="repwd" class="col-form-label col-3 text-end">비밀번호 확인</label>
                 <div class="col-3">
                     <input type="text" name="repwd" id="repwd" class="border-danger form-control" maxlength="18">
                 </div>
-                <label class="col-6 mt-2 lb2">이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</label>
+                <label class="col-6 mt-2 fs">이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</label>
             </div> <!-- repassword -->
             <div class="row mt-3">
                 <label for="name" class="col-form-label col-3 text-end">이름</label>
@@ -120,7 +120,7 @@
                 <label for="name" class="col-form-label col-3 text-end">자동가입방지</label>
                 <div class="col-5">
                     <div class="g-recaptcha" data-sitekey="6LdV86YgAAAAAPjlioYiGWSeYdsBvncDej6I0i-V"></div>
-                    <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+{#                    <input type="hidden" name="g-recaptcha" id="g-recaptcha">#}
                     <div class="text-danger">{{ error }}</div>
                 </div>
             </div> <!-- recaptcha -->
@@ -128,6 +128,11 @@
                     <button type="button" class="btn btn-warning" id="nojoin"><i class="bi bi-x"> </i> 입력취소</button>
                     <button type="button" class="btn btn-primary" id="okjoin"><i class="bi bi-check" ></i> 입력완료</button>
             </div> <!-- // buttons -->
+
+            <input type="hidden" name="seq">
+            <input type="hidden" name="ischecked" value="no">
+            <input type="hidden" name="ismatched" value="no">
+
         </form>
     </div> <!-- member info -->
     <!-- 우편번호 찾기 모달 -->
@@ -145,8 +150,8 @@
                         <div class="row mt-3">
                             <div class="col-1">&nbsp;</div>
                             <div class="col-3">
-                                <label for="dong" class="text-end text-danger ms-5 mt-n1">
-                                    검색할 주소의 동을 입력하세요</label>
+                                <label for="dong" class="text-center text-danger ms-5 mt-n1">
+                                    검색할 동을 입력하세요</label>
                             </div>
                             <div class="col-4">
                                 <input type="text" id="dong" name="dong" class="form-control border-danger">
@@ -201,11 +206,22 @@
     const repwd = document.querySelector('#repwd');
     const pwdmsg = document.querySelector('#pwdmsg');
 
+    {#passwd.addEventListener('blur', () => {#}
+    {#    document.joinfrm.ismatched.value = 'yes';#}
+    {#    if (passwd.value == '') {#}
+    {#        pa#}
+    {#    }#}
+    {#});#}
+
     repwd.addEventListener('blur', () => {
         let msg = '비밀번호가 일치합니다'
+        document.joinfrm.ismatched.value = 'yes';
+
         if (passwd.value != repwd.value) {
             msg = '비밀번호가 일치하지 않습니다!'
+            document.joinfrm.ismatched.value = 'no';
         }
+
         pwdmsg.innerHTML = msg;
     });
 
@@ -226,14 +242,54 @@
     const setZipcode = (dongs) => {
       //  console.log(dongs);
         dongs = JSON.parse(dongs); // 문자열을 JSON객체로 변환
-        // console.log(dongs[0])
+        console.log(dongs)
 
         // JSON 객체를 반복문을 이용해서
         // 주소정보를 option태그에 하나씩 결합함
         let opts = '';
+        let vals = ''
+        let seq = '';
         dongs.forEach((data, idx) => {
            // console.log(data, idx);
            // console.log(data.fields);
+            // <option>값</option> : selected => 값
+            // <option value='abc'>값</option> : selected => abc
+
+           vals = data.fields.zipcode + '&nbsp;';
+           vals += data.fields.sido + '&nbsp;';
+           vals += data.fields.gugun + '&nbsp;';
+           vals += data.fields.dong + '&nbsp;';
+           vals += data.fields.ri + '&nbsp;';
+           vals += data.fields.bunji ;
+           seq = '&nbsp;' + data.pk;
+
+           opts += `<option value="${vals}${seq}">`;
+           opts += vals;
+           opts += '</option>';
+        });
+        // console.log(opts)
+        console.log(seq)
+
+        // 결합된 option 태그들을
+        // select 태그 사이에 삽입함
+        addrlist.innerHTML = '';
+        addrlist.innerHTML = opts;
+    };
+
+    const setZipcode2 = (dongs) => {
+      //  console.log(dongs);
+        dongs = JSON.parse(dongs); // 문자열을 JSON객체로 변환
+        console.log(dongs)
+
+        // JSON 객체를 반복문을 이용해서
+        // 주소정보를 option태그에 하나씩 결합함
+        let opts = '';
+        let seq = 0
+        dongs.forEach((data, idx) => {
+           // console.log(data, idx);
+           // console.log(data.fields);
+            // <option>값</option> : selected => 값
+            // <option value='abc'>값</option> : selected => abc
            opts += '<option>';
            opts += data.fields.zipcode + '&nbsp;';
            opts += data.fields.sido + '&nbsp;';
@@ -244,6 +300,7 @@
            opts += '</option>';
         });
         // console.log(opts)
+        console.log(seq)
 
         // 결합된 option 태그들을
         // select 태그 사이에 삽입함
@@ -266,9 +323,11 @@
                 addr1.value = `${addrs[1]} ${addrs[2]}  ${addrs[3]} ${addrs[4]}`;
             addr2.value = `${addrs[5]} ${addrs[6]}`;
             }
-            addr1.value = `${addrs[1]} ${addrs[2]}  ${addrs[3]}`;
+            */
+            addr1.value = `${addrs[1]} ${addrs[2]} ${addrs[3]}`;
             addr2.value = `${addrs[4]} ${addrs[5]}`;
-                */
+            document.joinfrm.seq.value = addrs[addrs.length-1];
+            {#alert(document.joinfrm.seq.value);#}
 
             // 검색 결과 지운후 모달창 닫기
             addrlist.innerHTML = '';
@@ -279,17 +338,53 @@
 
     // 아이디 중복검사
     const userid = document.querySelector('#userid');
+    const uidmsg = document.querySelector('#uidmsg');
 
     userid.addEventListener('blur', () => {
         // alert('사용중인 아이디입니다')
         let qry = '?userid=' + userid.value;
         fetch('{% url 'userid' %}' + qry)
             .then(response => response.text())
-            .then(text => setUserid(text));
+            .then(text => check_userid(text));
     });
 
-    const setUserid = (userid) => {
-        console.log(userid)
+    const check_userid = (result) => {
+        let msg = '사용 가능한 아이디가 아닙니다!';
+        document.joinfrm.ischecked.value = 'no';
+        // 문자열로 넘어온 json 객체를
+        // 원래의 객체로 환원하기 위해 parse 함수 사용
+        // console.log(JSON.parse(result));
+
+        if ( JSON.parse(result).count == 0 ) {
+            document.joinfrm.ischecked.value = 'yes';
+            msg = '사용 가능한 아이디입니다';
+            uidmsg.setAttribute('class', 'text-dark fs');
+        }
+
+        uidmsg.innerHTML = msg;
     };
+
+    // 회원정보 입력 완료 처리
+    // html에서 input 요소를 가져오는 방법
+    // querySelector 함수에 id 이름을 이용
+    // document.폼이름.name 이름 이용
+    const okjoin = document.querySelector('#okjoin');
+    okjoin.addEventListener('click', () => {
+        const frm = document.joinfrm;
+        if (frm.userid.value == '') alert('아이디를 작성하세요!');
+        else if (frm.ischecked.value == 'no') alert('아이디를 중복검사를 하세요!');
+        else if (frm.passwd.value == '') alert('비밀번호를 작성하세요!');
+        else if (frm.repwd.value == '') alert('비밀번호 확인을 작성하세요!');
+        else if (frm.ismatched.value == 'no') alert('비밀번호가 일치하는지 확인하세요!');
+        else if (frm.zip1.value == '' || frm.zip1.value == '') alert('우편번호를 선택하세요!');
+        else if (frm.addr2.value == '') alert('상세주소를 작성하세요!');
+        else if (frm.email1.value == '') alert('이메일을 작성하세요!');
+        else if (frm.email2.value == '') alert('이메일을 센택하세요!');
+        else if (frm.mailing1.checked == false && frm.mailing2.checked == false) alert('메일링 수신여부를 선택하세요!');
+        else if (grecaptcha.getResponse() == '') alert('자동가입방지를 확인인하세요!');
+        else {
+            frm.submit();
+        }
+   });
 </script>
 {% endblock %}

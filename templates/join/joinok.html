@@ -1,15 +1,49 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-{% block title %} 세미프로젝트 메인 {% endblock %}
+{% block title %}회원가입-가입완료{% endblock %}
 
 {% block style %} {% endblock %}
 
 {% block contents %}
-        <div id="main">
-            <div class="mt-5 vh-100">
-                <h2><i class="bi bi-gear-fill text-danger"></i>회원가입</h2>
-                <hr>
-            </div>  <!-- page header -->
-        </div>  <!-- main -->
+<div id="main" class="mt-3">
+    <div class="d-flex justify-content-between">
+        <h2><i class="bi bi-people-fill"></i> 회원가입</h2>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <span class="badge bg-success p-2">이용약관</span></li>
+                <li class="breadcrumb-item">
+                    <span class="badge bg-success p-2">본인확인</span></li>
+                <li class="breadcrumb-item">
+                    <span class="badge bg-success p-2">정보입력</span></li>
+                <li class="breadcrumb-item">
+                    <span class="badge bg-success p-2">가입완료</span></li>
+            </ol>
+        </nav>
+    </div>  <!-- page header -->
+    <div class="mx-5">
+        <h3><i class="bi bi-journal-text"></i> 회원가입 완료</h3>
+        <small class="text-muted">안전하고 편리한 홈페이지 이용을 위해 회원님의 아이디와 비밀번호 관리에 주의해 주시기 바랍니다.</small>
+        <hr>
+    </div>   <!-- subtitle -->
+
+    <div>
+        <div class="text-center ">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 8rem"></i>
+            <div class="display-2 text-black-50"><span class="text-black fw-bold">회원가입</span>이 완료되었습니다</div>
+            <div class="display-2 text-black-50 fw-bold fs-5 mt-4">회원님은 모든 기능을 사용할 수 있습니다. 로그인 후 이용하시기 바랍니다.</div>
+            <div>{{ member.userid }} {{ member.email }} {{ member.zipcode.zicode }} {{ member.zipcode.sid }}
+                {{ member.zipcode.gugun }} {{ member.zipcode.dong }} {{ member.addr }} </div>
+            <div class="alert alert-danger mx-5 mt-5">
+                <p class="fw-bold fs-4">"반드시 이메일을 확인해주세요!"</p>
+                <p>회원정보 입력시 등록하신 이메일로 본인 인증메일이 발송됩니다.</p>
+                <span class="fw-bold text-success">이메일을 확인하시고,인증절차를 거치시면 회원인증이 완료</span>
+            </div>
+        </div> <!-- message -->
+        <div class="text-center mb-3 mt-4">
+            <button type="button" class="btn btn-primary"><i class="bi bi-hand-index"></i> 메인페이지로 이동하기</button>
+        </div>  <!-- button -->
+    </div>  <!-- // complete -->
+</div>  <!-- main -->
 {% endblock %}
 {% block script %}{% endblock %}

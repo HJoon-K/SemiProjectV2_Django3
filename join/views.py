@@ -1,3 +1,5 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core import serializers
@@ -43,6 +45,9 @@ class CheckmeViews(View):
         if result['success']:
             # 인증성공시 이름과 전화번호를
             tokens = { 'name': form['name'], 'phone': form['phone']}
+            # 한글저장이 가능한 JSON객체 문자열로 변환
+            tokens = json.dumps(tokens, ensure_ascii=True)
+            # print(tokens)
 
             # 쿠키 설정없이 페이지만 전환
             # return redirect('/join/joinme')
@@ -65,18 +70,56 @@ class JoinmeViews(View):
     def get(self, request):
         # 쿠기에 저장된 객체를 불러올려면 request.COOKIES.get(이름)
         cookie = request.COOKIES.get('tokens')
-        print(cookie)
-        # cookie = '{}'
-
-        return render(request, 'join/joinme.html', eval(cookie))
+        # print(cookie)
+        # cookie = '{}'   # test할때 사용함
+        try:
+            return render(request, 'join/joinme.html', eval(cookie))
+        except:
+            return redirect('/join/agree')
 
     def post(self, request):
-        pass
+        form = request.POST.dict()
+        print(form)
 
+        email = form['email1'] + '@' + form['email2']
+        mailing = True if form['mailing'] == 'yes' else False  # 삼항연산자
+
+        # 우편번호의 일련번호를 알아내기 위해
+        # zipcode에 필요한 정보를 넘겨서 조회함
+        # 단, 현남면, 경기 화정동으로 검색시
+        # 하나의 결과가 아닌 복수 결과가 넘어옴
+        # 새로운 setZipcode 함수 덕택으로 이코드는 사용 X
+        # zipcode = form['zip1'] + '-' + form['zip2']
+        # addrs = form['addr1'].split(' ')
+        # zip = Zipcode.objects.get(zipcode=zipcode, sido=addrs[0], gugun=addrs[1], dong=addrs[2])
+        # print(zip.seq)
+
+        m = Member(
+            userid=form['userid'],
+            passwd=form['passwd'],
+            name=form['name'],
+            phone=form['phone'],
+            # zipcode=Zipcode.objects.get(seq=zip.seq),
+            zipcode=Zipcode.objects.get(seq=form['seq']),
+            addr=form['addr2'],
+            email=email,
+            mailing=mailing
+        )
+        m.save()
+
+        return redirect('/join/joinok?userid=' + form['userid'])
 
 class JoinokViews(View):
     def get(self, request):
-        return render(request, 'join/joinok.html')
+        # join/joinok?userid=***
+        form=request.GET.dict()
+
+        # select * from member join zipcode on m.zipcode = z.seq
+        # where m.userid = ***
+        m = Member.objects.select_related().get(userid=form['userid'])
+
+        context = {'member': m}
+        return render(request, 'join/joinok.html', context)
 
     def post(self, request):
         pass
@@ -111,11 +154,17 @@ class UseridViews(View):
         # 응답 메세지 => { 'result': 0 또는 1 }
         form = request.GET.dict()
 
-        result = Member.objects.filter(userid=form['userid'])
-        print(result.value())
+        # select * from member where userid = ?
+        count = Member.objects.filter(userid=form['userid']).count()
+        # print(count)
 
-        json_data = serializers.serialize('json', result)
-        return HttpResponse(json_data, content_type='application/json')
+        json_data = {'count': count}
+
+        # 생성된 json 데이터를 직렬화 함 - 지원안됨(직렬화시 정보부족)
+        # json_data = serializers.serialize('json', json_data)
+
+        # 카운트 json.dumps 함수로 간단하게 문자열로 직렬화
+        return HttpResponse(json.dumps(json_data),content_type='application/json')
 
     def post(self, request):
         pass

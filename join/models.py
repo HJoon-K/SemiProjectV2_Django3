@@ -19,7 +19,7 @@ class Zipcode(models.Model):
 
 class Member(models.Model):
     id = models.AutoField(primary_key=True)
-    userid = models.CharField(max_length=18)
+    userid = models.CharField(max_length=18, unique=True)
     passwd = models.CharField(max_length=18)
     name = models.CharField(max_length=7)
     phone = models.CharField(max_length=15)
