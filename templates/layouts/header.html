@@ -1,10 +1,17 @@
 <header class="d-flex justify-content-between">
     <h1><a href="{% url 'index' %}">Lorem Ipsum</a></h1>
     <h1>
-        <button type="button" class="btn btn-danger"
-        data-bs-toggle="modal" data-bs-target="#loginmodal" >로그인</button>
-        <button type="button" class="btn btn-primary"
-        data-bs-toggle="modal" data-bs-target="#joinmodal" >회원가입</button>
+        {% if not request.session.userinfo %}
+            <button type="button" class="btn btn-danger"
+            data-bs-toggle="modal" data-bs-target="#loginmodal">로그인</button>
+            <button type="button" class="btn btn-primary"
+            data-bs-toggle="modal" data-bs-target="#joinmodal">회원가입</button>
+        {% endif %}
+
+        {% if request.session.userinfo %}
+            <button type="button" class="btn btn-dark"
+            data-bs-toggle="modal" data-bs-target="#joinmodal" id="logoutbtn">로그아웃</button>
+        {% endif %}
     </h1>
 </header>
 <nav class="nav navbar-expand navbar-dark bg-dark py-2 fw-bold">
@@ -14,11 +21,11 @@
         <li class="nav-item">
             <a class="nav-link " href="{% url 'agree' %}">회원가입</a></li>
         <li class="nav-item">
-            <a class="nav-link"  href="/board/list.html">게시판</a></li>
+            <a class="nav-link"  href="{% url 'blist' %}">게시판</a></li>
         <li class="nav-item">
-            <a class="nav-link"  href="/pds/list.html">자료실</a></li>
+            <a class="nav-link"  href="{% url 'plist' %}">자료실</a></li>
         <li class="nav-item">
-            <a class="nav-link"  href="/gallery/list.html">갤러리</a></li>
+            <a class="nav-link"  href="{% url 'glist' %}">갤러리</a></li>
        <li class="nav-item">
             <a class="nav-link"  href="{% url 'admin' %}">관리자</a></li>
     </ul>

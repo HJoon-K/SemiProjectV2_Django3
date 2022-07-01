@@ -1,3 +1,44 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views import View
+
+
+class ListView(View):
+    def get(self, request):
+        return render(request, 'pds/list.html')
+
+    def post(self, request):
+        pass
+
+
+class ModifyView(View):
+    def get(self, request):
+        return render(request, 'pds/modify.html')
+
+    def post(self, request):
+        pass
+
+
+class ViewView(View):
+    def get(self, request):
+        return render(request, 'pds/view.html')
+
+    def post(self, request):
+        pass
+
+
+class WriteView(View):
+    def get(self, request):
+        return render(request, 'pds/view.html')
+
+    def post(self, request):
+        pass
+
+
+class RemoveView(View):
+    def get(self, request):
+        return render(request, 'pds/remove.html')
+
+    def post(self, request):
+        pass

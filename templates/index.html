@@ -5,21 +5,83 @@
 {% block style %} {% endblock %}
 
 {% block contents %}
-  <div id="main">
-      <button type="button">버튼</button>
-      <button type="button" class="btn btn-danger">버튼</button>
-      <button type="button" class="btn btn-success">버튼</button>
-      <button type="button" class="btn btn-warning">버튼</button>
-      <button type="button" class="btn btn-primary">버튼</button>
-  </div>
+    <div id="main">
+        <div class="hero text-center">
+                <div><h1 class="display-2">超機密 PROJECT 補完計劃</h1></div>
+                <div><img src="{% static 'imgs/gendo.png' %}"></div>
+                <div><p>Ut felis felis, ultricies at eros a, viverra scelerisque eros. Pellentesque mattis accumsan lectus eget aliquam. Donec volutpat lacinia placerat. Ut id tortor auctor neque blandit eleifend. Vestibulum sagittis nisi eu tortor laoreet, et aliquet urna pellentesque. Morbi tincidunt molestie felis quis lacinia. Suspendisse in ipsum odio. Vestibulum vel finibus massa, at gravida nibh. Sed consequat fringilla tortor, malesuada dictum ligula feugiat non. Morbi gravida egestas commodo. Donec interdum ex vitae leo dictum posuere. Nunc gravida eleifend nunc, at volutpat ante scelerisque et.</p></div>
+                <div><button type="button" class="btn btn-success">지금 바로 시작하기</button></div>
+        </div>
+
+        <div class="row list">
+            <div class="col-sm-4">
+                <h2>極秘</h2>
+                <p>Morbi tempor scelerisque auctor. Cras sit amet aliquet magna. Ut pellentesque ultricies sapien, id dictum justo congue fringilla. Morbi sed nulla vitae nisl consectetur ultricies. Phasellus turpis neque, facilisis at lorem et, vestibulum pharetra tellus. Cras eget luctus metus. Phasellus dictum vitae leo a dignissim. Nullam tincidunt nisi velit, non ullamcorper magna egestas ut. Aliquam nisl ante, vehicula fermentum vehicula vel, imperdiet et sapien. Integer non dui quis augue aliquam aliquam. Suspendisse posuere sem non rhoncus scelerisque. Quisque malesuada non elit ac porttitor. Nunc facilisis metus vitae sollicitudin dignissim.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+            <div class="col-sm-4">
+                <h2>誤謬</h2>
+                <p>Aenean dignissim justo nec tristique pellentesque. Fusce bibendum molestie lectus ac vehicula. Curabitur mollis sagittis justo, eu commodo velit tempor vel. Proin eu laoreet lacus, vitae condimentum felis. Nam auctor magna vitae rhoncus consequat. Nunc feugiat diam in eros blandit, quis sollicitudin dui varius. Maecenas vestibulum sem augue, nec porttitor lorem congue ut. Quisque tincidunt orci a massa dignissim hendrerit. Mauris aliquet nisl vel gravida suscipit. Phasellus laoreet, neque ac tincidunt interdum, nisi neque facilisis risus, quis aliquam quam mi at leo.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+            <div class="col-sm-4">
+                <h2>警告</h2>
+                <p>Vivamus mollis condimentum magna sed pulvinar. Duis vitae lacus eu sapien tristique rutrum. Curabitur at lobortis felis, fringilla bibendum augue. Nam eu sem a magna efficitur ornare eu malesuada risus. Nam vehicula vel dui in consectetur. Fusce vel purus orci. Nunc efficitur velit sem, eu consectetur ipsum eleifend a.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+            <div class="col-sm-4">
+                <h2>危險</h2>
+                <p>Nam aliquam nunc venenatis ante sagittis tincidunt. Mauris egestas tristique malesuada. Duis mi sem, rutrum eu lacus eu, lacinia bibendum risus. Sed at dapibus eros. Proin sem purus, tristique in mi nec, congue faucibus odio. In hac habitasse platea dictumst. Vivamus porttitor neque et lorem imperdiet, in tincidunt lectus elementum. Praesent consectetur arcu sit amet felis congue malesuada. Pellentesque efficitur vel massa non ornare. In hac habitasse platea dictumst. Suspendisse pellentesque lorem at fringilla vehicula. Cras fermentum, purus ac euismod posuere, sem enim commodo dolor, vel iaculis enim turpis sit amet nunc. Mauris iaculis sapien magna, blandit viverra urna luctus vel. Cras id velit in purus interdum egestas sed sit amet erat.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+            <div class="col-sm-4">
+                <h2>隔離</h2>
+                <p>Pellentesque pellentesque lacus sem, non tempor sem pretium sed. Pellentesque et purus a arcu scelerisque iaculis quis sit amet lectus. Aenean cursus tristique neque ut tristique. Quisque turpis metus, pulvinar sit amet finibus vel, blandit sed mauris. Nullam et nisi sed ligula accumsan sagittis. Donec pellentesque efficitur elit, vel facilisis nulla fringilla vel. Nunc sed pretium orci. Vestibulum pellentesque ornare massa quis dictum. Vivamus efficitur ultrices nibh, id porttitor urna mattis non. Duis lobortis dolor ut velit feugiat, ac mollis nibh pellentesque.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+            <div class="col-sm-4">
+                <h2>制限</h2>
+                <p>Pellentesque in elementum ante, in feugiat nunc. In vel blandit felis. Nullam at lobortis elit. Sed egestas pellentesque diam, ac luctus lectus commodo sed. Suspendisse cursus purus mauris, id mattis mi gravida sit amet. Morbi mollis tristique tortor. Nam volutpat felis nisl, nec congue leo maximus nec. Integer pellentesque lacinia leo, sit amet molestie lacus ornare id. Aliquam bibendum mauris sit amet suscipit viverra. Vestibulum eget urna tincidunt, ullamcorper dui eu, iaculis magna. Nunc ac tortor at neque vehicula varius eget non velit. Suspendisse id odio sagittis, lobortis ligula sit amet, porta magna.</p>
+                <button type="button"
+                        class="btn btn-light">자세히 보기 &blacktriangleright;</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 {% block script %}
-  <script src="/js/vendor/bs5/bootstrap.bundle.min.js"></script>
+      <script src="/js/vendor/bs5/bootstrap.bundle.min.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+      <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+      <script>
+        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+      </script>
+      <script src="https://www.google-analytics.com/analytics.js" async></script>
+
+    <!-- login -->
+    <script>
+        const userid = document.querySelector('#userid');
+        const passwd = document.querySelector('#passwd');
+        const loginbtn = document.querySelector('#loginbtn');
+        const logoutbtn = document.querySelector('#logoutbtn');
+
+        loginbtn.addEventListener('click', () => {
+            if (userid.value == '') alert('아이디를 입력하세요!');
+            else if (passwd.value == '') alert('비밀번호를 입력하세요!');
+            else {
+                document.loginfrm.action = '{% url 'login' %}';
+                document.loginfrm.submit();
+            }
+        });
+
+        logoutbtn.addEventListener('click', () =>{
+            location.href = '{% url 'logout' %}';
+        });
+    </script>
+
 {% endblock %}

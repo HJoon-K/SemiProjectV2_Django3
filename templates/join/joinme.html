@@ -29,7 +29,7 @@
     </div>  <!-- page header -->
     <div class="mx-5">
         <h3><i class="bi bi-pencil"></i> 휴대폰 본인 확인</h3>
-        <small class="text-muted">회원정보는 개인정보 취급방침에 따라</small>
+        <small class="text-muted">회원정보는 개인정보 취급방침에 따라 안전하게 보호되며,회원님의 명백한 동의없이 공개 또는 제3자에게 제공되지 않습니다.</small>
         <hr>
     </div>   <!-- subtitle -->
 
@@ -206,12 +206,12 @@
     const repwd = document.querySelector('#repwd');
     const pwdmsg = document.querySelector('#pwdmsg');
 
-    {#passwd.addEventListener('blur', () => {#}
+    {# passwd.addEventListener('blur', () => {#}
     {#    document.joinfrm.ismatched.value = 'yes';#}
     {#    if (passwd.value == '') {#}
     {#        pa#}
     {#    }#}
-    {#});#}
+    {# }); #}
 
     repwd.addEventListener('blur', () => {
         let msg = '비밀번호가 일치합니다'
@@ -242,7 +242,7 @@
     const setZipcode = (dongs) => {
       //  console.log(dongs);
         dongs = JSON.parse(dongs); // 문자열을 JSON객체로 변환
-        console.log(dongs)
+        // console.log(dongs)
 
         // JSON 객체를 반복문을 이용해서
         // 주소정보를 option태그에 하나씩 결합함

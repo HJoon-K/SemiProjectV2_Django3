@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'join.apps.JoinConfig',
+    'board.apps.BoardConfig',
+    'pds.apps.PdsConfig',
+    'gallery.apps.GalleryConfig',
 ]
 
 MIDDLEWARE = [

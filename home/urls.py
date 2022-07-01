@@ -11,4 +11,9 @@ urlpatterns = [
     path('', views.HomeViews.as_view(), name='index'),
     path('intro/', views.IntroViews.as_view(), name='intro'),
     path('admin/', views.AdminViews.as_view(), name='admin'),
+    path('login/', views.LoginViews.as_view(), name='login'),
+    path('loginfail/', views.LoginfailViews.as_view(), name='loginfail'),
+    path('logout/', views.LogoutViews.as_view(), name='logout'),
+
 ]
+

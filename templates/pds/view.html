@@ -1,14 +1,8 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-{% block title %}게시판-본문보기{% endblock %}
+{% block title %}게시판본문보기{% endblock %}
 
-{% block style %}
-    <style>
-        .vhead { background: #dff0d8 !important; }
-        .vhead2 { background: #ffffcc !important;}
-        .bdbg { background: #ccff99 !important;}
-    </style>
- {% endblock %}
+{% block style %} {% endblock %}
 
 {% block contents %}
  <div id="main">
@@ -40,16 +34,19 @@
                 <table class="table">
                     <tbody>
                     <tr><td colspan="2" class="vhead p-5">
-                        <h3>{{ bd.title }}</h3>
+                        <h3>Praesent quis magna vitae nunc malesuada tempor a pretium metus.</h3>
                     </td></tr><!-- 제목 -->
 
                     <tr class="bdbg fw-bold">
-                        <td class="col-5 text-start ps-3 text-black-50">{{ bd.member.userid }}</td>
-                        <td class="text-end text-black-50 pe-3 ">{{ bd.regdate|date:'Y-m-d H:i:s' }} / {{ bd.thumbup }} / {{ bd.views }}</td>
+                        <td class="col-5 text-start ps-3 text-black-50">bigdata</td>
+                        <td class="text-end text-black-50 pe-3 ">2021.01.01 12:12:12 / 123 / 999</td>
                     </tr><!-- 작성자, 작성일, 조회수 -->
 
                     <tr>
-                        <td colspan="2" class="vhead2" style="height: 550px">{{ bd.contents }}</td>
+                        <td colspan="2" class="vhead2" style="height: 550px">
+                            Morbi tempor scelerisque auctor. Cras sit amet aliquet magna. Ut pellentesque ultricies sapien, id dictum justo congue fringilla. Morbi sed nulla vitae nisl consectetur ultricies. Phasellus turpis neque, facilisis at lorem et, vestibulum pharetra tellus. Cras eget luctus metus. Phasellus dictum vitae leo a dignissim. Nullam tincidunt nisi velit, non ullamcorper magna egestas ut. Aliquam nisl ante, vehicula fermentum vehicula vel, imperdiet et sapien. Integer non dui quis augue aliquam aliquam. Suspendisse posuere sem non rhoncus scelerisque. Quisque malesuada non elit ac porttitor. Nunc facilisis metus vitae sollicitudin dignissim.
+                            Morbi tempor scelerisque auctor. Cras sit amet aliquet magna. Ut pellentesque ultricies sapien, id dictum justo congue fringilla. Morbi sed nulla vitae nisl consectetur ultricies. Phasellus turpis neque, facilisis at lorem et, vestibulum pharetra tellus. Cras eget luctus metus. Phasellus dictum vitae leo a dignissim. Nullam tincidunt nisi velit, non ullamcorper magna egestas ut. Aliquam nisl ante, vehicula fermentum vehicula vel, imperdiet et sapien. Integer non dui quis augue aliquam aliquam. Suspendisse posuere sem non rhoncus scelerisque. Quisque malesuada non elit ac porttitor. Nunc facilisis metus vitae sollicitudin dignissim.
+                        </td>
                     </tr><!-- 본문 -->
                     </tbody>
                 </table>

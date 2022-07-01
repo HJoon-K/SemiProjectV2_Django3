@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment="joinme.html joinok.html views 변경">
-      <change afterPath="$PROJECT_DIR$/join/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0002_auto_20220629_1528.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0003_alter_member_userid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0004_auto_20220629_1529.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0005_remove_member_phone.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0006_auto_20220629_1740.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0007_auto_20220629_1741.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/join/migrations/0008_alter_member_userid.py" afterDir="false" />
+    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment=".">
+      <change afterPath="$PROJECT_DIR$/board/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/board/migrations/0002_alter_board_options.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/board/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gallery/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pds/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/favicon-1.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gallery/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/loginfail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pds/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pds/modify.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pds/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pds/write.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SemiProjectV2_Django3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SemiProjectV2_Django3/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SemiProjectV2_Django3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SemiProjectV2_Django3/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gallery/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/join/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/join/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/join/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/join/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pds/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pds/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/webproject.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/webproject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/modify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/board/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/join/joinme.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/join/joinme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layouts/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/modal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +74,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/bigdata/Documents/sample_data/zipcode_20130201(2)/zipcode_20130201(2).txt",
+    "last_opened_file_path": "C:/Users/bigdata/Documents/Project/SemiProjectV2_Django3/templates/gallery",
     "list.type.of.created.stylesheet": "CSS",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
@@ -61,11 +86,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\join" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\join" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\board" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static\imgs" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\gallery" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\pds" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\gallery" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\board" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\pds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\join" />
@@ -114,6 +139,9 @@
       <workItem from="1656462891726" duration="17805000" />
       <workItem from="1656482048677" duration="12474000" />
       <workItem from="1656548116341" duration="29131000" />
+      <workItem from="1656635073649" duration="19115000" />
+      <workItem from="1656656625772" duration="28000" />
+      <workItem from="1656656755620" duration="6917000" />
     </task>
     <task id="LOCAL-00001" summary="최초버전">
       <created>1656408081651</created>
@@ -143,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656580844165</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <created>1656635355133</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656635355133</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +198,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="최초버전" />
     <MESSAGE value="joinme.html models urls views 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="joinme.html models urls views 변경" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

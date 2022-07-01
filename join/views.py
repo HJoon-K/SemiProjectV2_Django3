@@ -11,7 +11,7 @@ import requests
 from join.models import Zipcode, Member
 
 
-class AgreeViews(View):
+class AgreeView(View):
     def get(self, request):
         return render(request, 'join/agree-1.html')
 
@@ -19,7 +19,7 @@ class AgreeViews(View):
         pass
 
 
-class CheckmeViews(View):
+class CheckmeView(View):
     def get(self, request):
         return render(request, 'join/checkme.html')
 
@@ -66,7 +66,7 @@ class CheckmeViews(View):
         context = {'form': form, 'error': error}
         return render(request, 'join/checkme.html', context)
 
-class JoinmeViews(View):
+class JoinmeView(View):
     def get(self, request):
         # 쿠기에 저장된 객체를 불러올려면 request.COOKIES.get(이름)
         cookie = request.COOKIES.get('tokens')
@@ -109,7 +109,7 @@ class JoinmeViews(View):
 
         return redirect('/join/joinok?userid=' + form['userid'])
 
-class JoinokViews(View):
+class JoinokView(View):
     def get(self, request):
         # join/joinok?userid=***
         form=request.GET.dict()
@@ -124,7 +124,7 @@ class JoinokViews(View):
     def post(self, request):
         pass
 
-class ZipcodeViews(View):
+class ZipcodeView(View):
     def get(self, request):
         form = request.GET.dict()
 
@@ -148,7 +148,7 @@ class ZipcodeViews(View):
         pass
 
 
-class UseridViews(View):
+class UseridView(View):
     def get(self, request):
         # /join/userid?=***
         # 응답 메세지 => { 'result': 0 또는 1 }
