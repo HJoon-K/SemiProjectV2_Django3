@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment="join board 수정">
-      <change afterPath="$PROJECT_DIR$/board/migrations/0003_comment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pds/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pds/migrations/0002_auto_20220706_1248.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templatetags/split.py" afterDir="false" />
+    <list default="true" id="d1447aeb-e996-4979-9598-3acb8b425121" name="변경" comment="pds urls views list.html view.html write.html 수정 split.py 생성">
+      <change afterPath="$PROJECT_DIR$/gallery/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pds/templatetags/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gallery/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gallery/write.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/board/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pds/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pds/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pds/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pds/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gallery/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gallery/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gallery/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gallery/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pds/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pds/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/write.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pds/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pds/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gallery/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gallery/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pds/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pds/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pds/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pds/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templatetags/split.py" beforeDir="false" afterPath="$PROJECT_DIR$/pds/templatetags/split.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,32 +46,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bigdata/Documents/Project/SemiProjectV2_Django3/templates/pds&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/bigdata/Documents/Project/SemiProjectV2_Django3/gallery",
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\gallery" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\gallery" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\pds" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\board" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static\css\vendor\bs5" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\gallery" />
-      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\pds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\pds" />
+      <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\pds" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\templates\join" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static\css\vendor" />
       <recent name="C:\Users\bigdata\Documents\Project\SemiProjectV2_Django3\static\css\vendor\bs5" />
@@ -132,6 +129,9 @@
       <workItem from="1657005453258" duration="876000" />
       <workItem from="1657067241361" duration="10487000" />
       <workItem from="1657078459589" duration="2929000" />
+      <workItem from="1657153098566" duration="4808000" />
+      <workItem from="1657157969779" duration="295000" />
+      <workItem from="1657158272111" duration="9556000" />
     </task>
     <task id="LOCAL-00001" summary="최초버전">
       <created>1656408081651</created>
@@ -182,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656664108065</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="pds urls views list.html view.html write.html 수정 split.py 생성">
+      <created>1657153299038</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657153299038</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +211,7 @@
     <MESSAGE value="joinme.html models urls views 변경" />
     <MESSAGE value="." />
     <MESSAGE value="join board 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="join board 수정" />
+    <MESSAGE value="pds urls views list.html view.html write.html 수정 split.py 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="pds urls views list.html view.html write.html 수정 split.py 생성" />
   </component>
 </project>

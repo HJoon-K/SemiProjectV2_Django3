@@ -5,6 +5,7 @@ from math import ceil
 from uuid import uuid4
 
 from django.core.paginator import Paginator
+from django.db.models import F
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -109,11 +110,37 @@ class WriteView(View):
         return redirect('/pds/list')
 
 class RemoveView(View):
-    def get(self, request):
-        return render(request, 'pds/remove.html')
+    # 첨부파일 삭제시 글작성자와 로그인 사용자 일치여부 검사
+    # Django가 지원하지 않는 템플릿 필터를 사용하려면 사용자 정의 템플릿 필터를 작성해야 함
+    # 1. 필터/태그를 작성할 앱이 있는 디렉토리에서
+    #   templatetags라는 폴더 생성
+    # 2. 필터/태그의 기능을 수행하는 소스(.py) 작성
+    # 3. 필터/태그의 기능을 실행하려는 html 소스상에서
+    # {% load 필터명 %} 이라는 코드를 작성함
+    # 4. 서버를 재시작해야 필터/태그 사용가능함
+    # https://docs.djangoproject.com/ko/3.2/howto/custom-template-tags/
 
-    def post(self, request):
-        pass
+    def get(self, request):
+        form = request.GET.dict()
+
+        # 게시글 알아냄
+        p = Pds.objects.get(id=form['pno'])
+
+
+        # 첨부파일 삭제
+        fpath = 'c:/Java/pdsupload/' + p.uuid   # 삭제할 파일의 경로 정의
+
+        #
+        if request.session.get('userinfo').split('|')[0] ==  p.member.userid:
+            for fn in json.loads(p.fnames):
+                if fn:
+                    rmvOne = fpath + fn
+                    os.remove(rmvOne)   # 지정한 경로상의 파일 삭제
+
+        # 테이블상의 게시글 삭제
+        Pds.objects.filter(id=form['pno']).delete()
+
+        return redirect('/pds/list')
 
 
 class PdownView(View):
@@ -131,6 +158,14 @@ class PdownView(View):
         # 다운로드할 파일의 실제 경로 생성
         fpath = fpath + p.uuid + fname
         print(fpath)
+
+        # 다운수 증가
+        # 다운수를 수정하기 위해 다운수를 역직렬화해서 가져옴
+        fdowns = json.loads(p.fdowns)
+        fdowns[odr] = fdowns[odr] + 1
+
+        # 수정된 다운수는 다시 직렬화해서 테이블에 저장
+        Pds.objects.filter(id=form['pno']).update(fdowns=json.dumps(fdowns))
 
         # 실제 경로상의 파일을 바이너리 형식으로 읽어서
         # 클라이언트로 전송

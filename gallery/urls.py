@@ -9,9 +9,9 @@ from . import views
 
 urlpatterns = [
     path('list/', views.ListView.as_view(), name='glist'),
-    path('modify/', views.ModifyView.as_view(), name='modify'),
-    path('view/', views.ViewView.as_view(), name='view'),
-    path('write/', views.WriteView.as_view(), name='write'),
-    path('remove/', views.RemoveView.as_view(), name='remove'),
+    path('modify/', views.ModifyView.as_view(), name='gmodify'),
+    path('view/', views.ViewView.as_view(), name='gview'),
+    path('write/', views.WriteView.as_view(), name='gwrite'),
+    path('remove/', views.RemoveView.as_view(), name='gremove'),
 ]
 
