@@ -3,9 +3,9 @@
 {% block title %}게시판-본문보기 {% endblock %}
 
 {% block style %}
-    <style>
-        .thead { background: #dff0d8; border: none;}
-    </style>
+<style>
+    .thead { background: #dff0d8; border: none;}
+</style>
 {% endblock %}
 
 {% block contents %}
@@ -27,7 +27,7 @@
                 </select>&nbsp;
                 <input type="text" name="findkey" id="findkey"
                        class="form-control w-50 findfrm2">&nbsp;
-                <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-light" id="findbtn">
                     <i class="bi bi-search"></i> 검색하기</button>
             </div>
             <div class="col-sm-5 text-end">
@@ -86,47 +86,66 @@
         <div class="row mt-n2">
             <div class="col-12 mb-5">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a href="#" class="page-link">이전</a>
-                    </li>
-                    <li class="page-item active">
-                        <a href="#" class="page-link  cpage">1</a>
-                    </li>
                     <li class="page-item">
-                        <a href="#" class="page-link">2</a>
+                        <a href="?cpage=1&{{ qry }}" class="page-link">처음</a>
                     </li>
+                    {%  if request.GET.cpage|add:0 > 1 %}
                     <li class="page-item">
-                        <a href="#" class="page-link">3</a>
+                        <a href="?cpage={{ request.GET.cpage|add:-1 }}&{{ qry }}" class="page-link">이전</a>
                     </li>
+                    {% endif %}
+
+                    {# 페이지네이션 출력 #}
+                    {% for i in range %}
+                        {# 페이지번호가 총페이지수보다 작으면 출력 #}
+                        {%  if i <= pages %}
+                        <li class="page-item
+                            {#  페이지번호가 현재페이지 cpage와 같으면 active 출력 #}
+                            {% if i == request.GET.cpage|add:0 %}active{% endif %}">
+                            <a href="?cpage={{ i }}&{{ qry }}" class="page-link cpage">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if request.GET.cpage|add:0 < pages %}
                     <li class="page-item">
-                        <a href="#" class="page-link">4</a>
+                        <a href="?cpage={{ request.GET.cpage|add:1 }}&{{ qry }}" class="page-link">다음</a>
                     </li>
+                    {% endif %}
                     <li class="page-item">
-                        <a href="#" class="page-link">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">6</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">7</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">8</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">9</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">10</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">다음</a>
+                        <a href="?cpage={{ pages }}&{{ qry }}" class="page-link">끝</a>
                     </li>
                 </ul>
             </div>
         </div> <!-- // 페이지 네비게이션 -->
-
     </div> <!-- // main -->
 {% endblock %}
 {% block script %}
+<script>
+    const findbtn = document.querySelector('#findbtn');
+    const findtype = document.querySelector('#findtype');
+    const findkey = document.querySelector('#findkey');
+
+    // Cannot read properties of null 세련되게 처리하기
+    //  emcascript 2020지원시  optional chaining 사용
+    // ==> 겍체명?.addEventListener
+    findbtn?.addEventListener('click', () => {
+        if (findkey.value == '') alert('검색할 단어를 입력하세요!');
+        else {
+            let qry = '?ftype=' + findtype.value;
+            qry += '&fkey=' + findkey.value;
+            location.href='{%  url 'blist' %}' + qry;
+        }
+    });
+
+    // emcascript 2020 미지원시 삼항연산자 이용
+    {#findbtn ? findbtn.addEventListener('click', () => {#}
+    {#    alert('!!!'); }) : null;#}
+
+    // emcascript 2020 미지원시 삼항연산자 이용
+    {#if (findbtn != null) {#}
+    {#    findbtn ? findbtn.addEventListener('click', () => {#}
+    {#    alert('!!!'); }) ;#}
+    {# } #}
+</script>
 {% endblock %}

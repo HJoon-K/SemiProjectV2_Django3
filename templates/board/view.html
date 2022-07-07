@@ -3,11 +3,14 @@
 {% block title %}게시판-본문보기{% endblock %}
 
 {% block style %}
-    <style>
-        .vhead { background: #dff0d8 !important; }
-        .vhead2 { background: #ffffcc !important;}
-        .bdbg { background: #ccff99 !important;}
-    </style>
+<style>
+    .vhead { background: #dff0d8 !important; }
+    .vhead2 { background: #ffffcc !important;}
+    .bdbg { background: #ccff99 !important;}
+
+    .cmtbg { background: yellow; padding: 5px 0; }
+    .rplybg { background: lime; padding: 5px 0; }
+</style>
  {% endblock %}
 
 {% block contents %}
@@ -79,42 +82,25 @@
                 <h3 class="mb-3 mt-4"><i class="bi bi-chat-quote-fill"></i>
                     나도 한마디</h3>
                 <table class="table rhead">
-                    <tr>
-                        <td class="cmtusr"><h4>spring</h4></td>
-                        <td><div class="cmtbg">
-                            2021.12.31 12:13:14</div>
-                            <p class="cmt p-3 text-just">Aenean dignissim justo nec tristique pellentesque. Fusce bibendum molestie lectus ac vehicula. Curabitur mollis sagittis justo, eu commodo velit tempor vel. Proin eu laoreet lacus, vitae condimentum felis. Nam auctor magna vitae rhoncus consequat. Nunc feugiat diam in eros blandit, quis sollicitudin dui varius. Maecenas vestibulum sem augue, nec porttitor lorem congue ut. Quisque tincidunt orci a massa dignissim hendrerit. Mauris aliquet nisl vel gravida suscipit. Phasellus laoreet, neque ac tincidunt interdum, nisi neque facilisis risus, quis aliquam quam mi at leo.</p>
-                            <ul class="rply list-group">
-                                <li>
-                                    <div class="rplybg">
-                                        <span><b>bootstrap</b></span>
-                                        <span style="float:right">2021-12-31 13:13:14</span>
-                                    </div>
-                                    <p class="cmt">정말인가요? 우와~ 심하다!~</p>
-                                </li>
-                            </ul><!-- 대댓글 -->
-                        </td></tr>
-                    <tr>
-                        <td class="cmtusr"><h4>spring</h4></td>
-                        <td><div class="cmtbg">
-                            2021.12.31 12:13:14</div>
-                            <p class="cmt p-3 text-just">Aenean dignissim justo nec tristique pellentesque. Fusce bibendum molestie lectus ac vehicula. Curabitur mollis sagittis justo, eu commodo velit tempor vel. Proin eu laoreet lacus, vitae condimentum felis. Nam auctor magna vitae rhoncus consequat. Nunc feugiat diam in eros blandit, quis sollicitudin dui varius. Maecenas vestibulum sem augue, nec porttitor lorem congue ut. Quisque tincidunt orci a massa dignissim hendrerit. Mauris aliquet nisl vel gravida suscipit. Phasellus laoreet, neque ac tincidunt interdum, nisi neque facilisis risus, quis aliquam quam mi at leo.</p>
-                        </td></tr>
-                    <tr>
-                        <td class="cmtusr"><h4>spring</h4></td>
-                        <td><div class="cmtbg">
-                            2021.12.31 12:13:14</div>
-                            <p class="cmt p-3 text-just">Aenean dignissim justo nec tristique pellentesque. Fusce bibendum molestie lectus ac vehicula. Curabitur mollis sagittis justo, eu commodo velit tempor vel. Proin eu laoreet lacus, vitae condimentum felis. Nam auctor magna vitae rhoncus consequat. Nunc feugiat diam in eros blandit, quis sollicitudin dui varius. Maecenas vestibulum sem augue, nec porttitor lorem congue ut. Quisque tincidunt orci a massa dignissim hendrerit. Mauris aliquet nisl vel gravida suscipit. Phasellus laoreet, neque ac tincidunt interdum, nisi neque facilisis risus, quis aliquam quam mi at leo.</p>
-                            <ul class="rply">
-                                <li>
-                                    <div class="rplybg">
-                                        <span><b>bootstrap</b></span>
-                                        <span style="float:right">2021-12-31 13:13:14</span>
-                                    </div>
-                                    <p class="cmt">정말인가요? 우와~ 심하다!~</p>
-                                </li>
-                            </ul><!-- 대댓글 -->
-                        </td></tr>
+                    {% for c in cmt %}
+                    {% if c.id == c.cno %}
+                    <tr><td class="cmtusr"><h4>{{ c.member.userid }}</h4></td>
+                        <td><div class="cmtbg">{{ c.regdate|date:'Y-m-d H:i:s' }}</div>
+                            <p class="cmt text-just">{{ c.comments }}</p>
+                        </td></tr> <!-- 댓글 -->
+                    {% elif c.id != c.cno %}
+                    <tr><td></td>
+                        <td><ul class="rply list-unstyled">
+                            <li>
+                                <div class="rplybg">
+                                    <span><b>{{ c.member.userid }}</b></span>
+                                    <span style="float:right">{{ c.regdate|date:'Y-m-d H:i:s' }}</span>
+                                </div>
+                                <p class="cmt">{{ c.comments }}</p>
+                            </li>
+                        </ul></td></tr> <!-- 답글/대댓글 -->
+                    {% endif %}
+                    {% endfor %}
                 </table>
             </div>
             <div class="col"></div>
@@ -123,13 +109,20 @@
         <div class="row mt-4 mb-5">
             <div class="col"></div>
             <div class="col-9 card card-body bg-light ">
-                <form name="cmtfrm" id="cmtfrm">
+                <form name="cmtfrm" id="cmtfrm" method="post">
+                    {% csrf_token %}
                     <div class="d-flex flex-row justify-content-between align-items-center">
-                        <label class="cmtlbl">로그인하세요</label>
-                        <textarea rows="7" class="form-control"></textarea>
-                        <button type="button" class="btn btn-dark cmtbtn">
+                        <label class="w-25 text-center">
+                            {% if not request.session.userinfo %}로그인하세요{% else %}
+                            {{ lgnusr }}{% endif %}
+                        </label>
+                        <textarea rows="7" class="form-control" name="comments"></textarea>
+                        <button type="button" class="btn btn-dark w-25 ms-3" id="cmtbtn"
+                                {% if not request.session.userinfo %}disabled{% endif %}>
                             <i class="bi bi-reply-all"></i> 댓글쓰기</button>
                     </div>
+                    <input type="hidden" name="userid" value="{{ lgnusr }}">
+                    <input type="hidden" name="bno" value="{{ request.GET.bno }}">
                 </form>
             </div>
             <div class="col"></div>
@@ -138,5 +131,18 @@
     </div> <!-- // main -->
 {% endblock %}
 {% block script %}
-  <script src="/js/vendor/bs5/bootstrap.bundle.min.js"></script>
+<script>
+    const cmtbtn = document.querySelector('#cmtbtn')
+    const frm = document.cmtfrm;
+
+    cmtbtn?.addEventListener('click', () => {
+        if (frm.comments.value == '') alert('댓글을 쓰세요!!');
+        else {
+            frm.action = '{% url 'bcmnt' %}';
+            frm.submit();
+        }
+    });
+
+</script>
+
 {% endblock %}

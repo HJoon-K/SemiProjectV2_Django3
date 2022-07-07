@@ -14,5 +14,6 @@ urlpatterns = [
     path('write/', views.WriteView.as_view(), name='bwrite'),
     path('remove/', views.RemoveView.as_view(), name='bremove'),
     path('setup/', views.SetupView.as_view(), name='bsetup'),
+    path('cmnt/', views.CmntView.as_view(), name='bcmnt'),
 ]
 

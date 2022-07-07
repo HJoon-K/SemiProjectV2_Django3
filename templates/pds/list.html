@@ -1,13 +1,17 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-{% block title %}  {% endblock %}
+{% block title %}게시판-본문보기 {% endblock %}
 
-{% block style %} {% endblock %}
+{% block style %}
+<style>
+    .thead { background: #dff0d8; border: none;}
+</style>
+{% endblock %}
 
 {% block contents %}
 <div id="main">
         <div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mt-2">
                 <h2><i class="bi bi-chat-text-fill"></i> 자료실</h2>
             </div>
             <hr>
@@ -16,14 +20,14 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5 d-flex flex-row">
-                <select name="findtype" id="findtype" class="form-select findfrm">
+                <select name="findtype" id="findtype" class="form-select w-25 findfrm">
                     <option value="title">제 &nbsp; 목</option>
                     <option value="userid">작성자</option>
                     <option value="contents">본 &nbsp; 문</option>
                 </select>&nbsp;
                 <input type="text" name="findkey" id="findkey"
-                       class="form-control findfrm2">&nbsp;
-                <button type="button" class="btn btn-light">
+                       class="form-control w-50 findfrm2">&nbsp;
+                <button type="button" class="btn btn-light" id="findbtn">
                     <i class="bi bi-search"></i> 검색하기</button>
             </div>
             <div class="col-sm-5 text-end">
@@ -59,240 +63,16 @@
                         <th>123</th>
                     </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td><a href="/board/view.html?bno=1">Praesent quis magna vitae nunc malesuada tempor a pretium metus.</a></td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Praesent quis magna vitae nunc
-                            malesuada tempor a pretium metus.</td>
-                        <td>bigdata</td>
-                        <td>2021.01.01</td>
-                        <td>123</td>
-                        <td>999</td>
-                    </tr>
-
+                    {% for p in pds %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td><a href="{% url 'pview' %}?pno={{ p.id }}">{{ p.title }}</a></td>
+                            <td>{{ p.member.userid }}</td>
+                            <td>{{ p.regdate|date:'Y-m-d' }}</td>
+                            <td>{{ p.thumbup }}</td>
+                            <td>{{ p.views }}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
 
                     <tfoot class="tfoot">
@@ -306,47 +86,66 @@
         <div class="row mt-n2">
             <div class="col-12 mb-5">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a href="#" class="page-link">이전</a>
-                    </li>
-                    <li class="page-item active">
-                        <a href="#" class="page-link  cpage">1</a>
-                    </li>
                     <li class="page-item">
-                        <a href="#" class="page-link">2</a>
+                        <a href="?cpage=1&{{ qry }}" class="page-link">처음</a>
                     </li>
+                    {%  if request.GET.cpage|add:0 > 1 %}
                     <li class="page-item">
-                        <a href="#" class="page-link">3</a>
+                        <a href="?cpage={{ request.GET.cpage|add:-1 }}&{{ qry }}" class="page-link">이전</a>
                     </li>
+                    {% endif %}
+
+                    {# 페이지네이션 출력 #}
+                    {% for i in range %}
+                        {# 페이지번호가 총페이지수보다 작으면 출력 #}
+                        {%  if i <= pages %}
+                        <li class="page-item
+                            {#  페이지번호가 현재페이지 cpage와 같으면 active 출력 #}
+                            {% if i == request.GET.cpage|add:0 %}active{% endif %}">
+                            <a href="?cpage={{ i }}&{{ qry }}" class="page-link cpage">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if request.GET.cpage|add:0 < pages %}
                     <li class="page-item">
-                        <a href="#" class="page-link">4</a>
+                        <a href="?cpage={{ request.GET.cpage|add:1 }}&{{ qry }}" class="page-link">다음</a>
                     </li>
+                    {% endif %}
                     <li class="page-item">
-                        <a href="#" class="page-link">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">6</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">7</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">8</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">9</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">10</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">다음</a>
+                        <a href="?cpage={{ pages }}&{{ qry }}" class="page-link">끝</a>
                     </li>
                 </ul>
             </div>
         </div> <!-- // 페이지 네비게이션 -->
-
     </div> <!-- // main -->
 {% endblock %}
 {% block script %}
+<script>
+    const findbtn = document.querySelector('#findbtn');
+    const findtype = document.querySelector('#findtype');
+    const findkey = document.querySelector('#findkey');
+
+    // Cannot read properties of null 세련되게 처리하기
+    //  emcascript 2020지원시  optional chaining 사용
+    // ==> 겍체명?.addEventListener
+    findbtn?.addEventListener('click', () => {
+        if (findkey.value == '') alert('검색할 단어를 입력하세요!');
+        else {
+            let qry = '?ftype=' + findtype.value;
+            qry += '&fkey=' + findkey.value;
+            location.href='{%  url 'blist' %}' + qry;
+        }
+    });
+
+    // emcascript 2020 미지원시 삼항연산자 이용
+    {#findbtn ? findbtn.addEventListener('click', () => {#}
+    {#    alert('!!!'); }) : null;#}
+
+    // emcascript 2020 미지원시 삼항연산자 이용
+    {#if (findbtn != null) {#}
+    {#    findbtn ? findbtn.addEventListener('click', () => {#}
+    {#    alert('!!!'); }) ;#}
+    {# } #}
+</script>
 {% endblock %}
