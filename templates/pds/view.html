@@ -57,7 +57,8 @@
                         <td colspan="2" class="vhead2" style="height: 550px">{{ p.contents }}</td>
                     </tr><!-- 본문 -->
 
-                    zip 함수로 묶어서 보낸 데이터는
+                    {# zip 함수로 묶어서 보낸 데이터는 #}
+                    {# for문으로 각각 풀어서 개별 변수에 대입 #}
                     {% for fn, odr, fs, fd in finfo %}
                     {% if fn %}
                     <tr class="text-end">

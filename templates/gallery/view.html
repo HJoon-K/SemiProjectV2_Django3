@@ -1,14 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-{% load split %}
-
 {% block title %}게시판-본문보기{% endblock %}
 
 {% block style %}
 <style>
     .vhead { background: #dff0d8 !important; }
     .vhead2 { background: #ffffcc !important;}
-    .pbg { background: #ccff99 !important;}
+    .bdbg { background: #ccff99 !important;}
 
     .cmtbg { background: yellow; padding: 5px 0; }
     .rplybg { background: lime; padding: 5px 0; }
@@ -19,7 +17,7 @@
  <div id="main">
         <div>
             <div class="d-flex justify-content-between">
-                <h2><i class="bi bi-chat-text-fill"></i> 자료실</h2>
+                <h2><i class="bi bi-image-fill"></i> 갤러리</h2>
             </div>
             <hr>
         </div>
@@ -45,26 +43,33 @@
                 <table class="table">
                     <tbody>
                     <tr><td colspan="2" class="vhead p-5">
-                        <h3>{{ p.title }}</h3>
+                        <h3>{{ g.title }}</h3>
                     </td></tr><!-- 제목 -->
 
-                    <tr class="pbg fw-bold">
-                        <td class="col-5 text-start ps-3 text-black-50">{{ p.member.userid }}</td>
-                        <td class="text-end text-black-50 pe-3 ">{{ p.regdate|date:'Y-m-d H:i:s' }} / {{ p.thumbup }} / {{ p.views }}</td>
+                    <tr class="bdbg fw-bold">
+                        <td class="col-5 text-start ps-3 text-black-50">{{ g.member.userid }}</td>
+                        <td class="text-end text-black-50 pe-3 ">{{ g.regdate|date:'Y-m-d H:i:s' }} / {{ g.thumbup }} / {{ g.views }}</td>
                     </tr><!-- 작성자, 작성일, 조회수 -->
 
                     <tr>
-                        <td colspan="2" class="vhead2" style="height: 550px">{{ p.contents }}</td>
+                        <td colspan="2" class="vhead2" style="height: 550px">
+                            {% for fn in ginfo %}
+                                {% if fn %}
+                                <img src="http://127.0.0.1/{{ g.uuid }}{{ fn }}" class="img-fluid">
+                                {% endif %}
+                            {% endfor %}
+                            <p class="mt-3">{{ g.contents }}</p>
+                        </td>
                     </tr><!-- 본문 -->
 
-                    zip 함수로 묶어서 보낸 데이터는
-                    {% for fn, odr, fs, fd in finfo %}
-                    {% if fn %}
-                    <tr class="text-end">
-                        <td colspan="2" class="text-end ">
-                            <a href="{%  url 'pdown' %}?pno={{ p.id }}&odr={{ odr }}" class="">{{ fn }}</a> ({{ fs }}KB, {{ fd }}회 다운로드)</td>
-                    </tr><!-- 첨부파일 -->
-                    {% endif %}
+                    {# zip 함수로 묶어서 보낸 데이터는 #}
+                    {# for문으로 각각 풀어서 개별 변수에 대입 #}
+                    {% for fn, fs in ginfo2 %}
+                        {% if fn %}
+                        <tr class="text-end">
+                            <td colspan="2" >{{ fn }} {{ fs }}KB</td>
+                        </tr><!-- 이미지 파일 -->
+                        {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>
@@ -75,13 +80,11 @@
         <div class="row mt-1">
             <div class="col"></div>
             <div class="col-5">
-                {% if p.member.userid == request.session.userinfo|split:'|'|first %}
                 <button type="button"
                         class="btn btn-warning text-white">
                     <i class="bi bi-pencil-square"></i> 수정하기</button>
-                <button type="button" class="btn btn-danger" id="prmvbtn">
+                <button type="button" class="btn btn-danger">
                     <i class="bi bi-trash"></i> 삭제하기</button>
-                {% endif %}
             </div>
             <div class="col-5 text-end">
                 <button type="button" class="btn btn-light">
@@ -144,6 +147,7 @@
 
     </div> <!-- // main -->
 {% endblock %}
+
 {% block script %}
 <script>
     const cmtbtn = document.querySelector('#cmtbtn')

@@ -4,6 +4,9 @@ from datetime import datetime
 from math import ceil
 from uuid import uuid4
 
+# pip install pillow
+from PIL import Image
+
 from django.core.paginator import Paginator
 from django.db.models import F
 from django.http import HttpResponse
@@ -23,7 +26,7 @@ class ListView(View):
     def get(self, request):
         galist = Gallery.objects.select_related()
 
-        context = {'gal': galist}
+        context = {'gal': galist, 'fimg': 'gendo.png'}
         return render(request, 'gallery/list.html', context)
 
     def post(self, request):
@@ -41,18 +44,40 @@ class ModifyView(View):
 class ViewView(View):
     def get(self, request):
         form = request.GET.dict()
-        p = Pds.objects.select_related().get(id=form['pno'])
+        g = Gallery.objects.select_related().get(id=form['gno'])
 
-        #  문자열 형태로 저장되어 있는 fnames를
-        # json의 loads함수로 원래의 자료형으로 되돌림
-        # 또한 template으로 보낼 값이 여러개인 경우
-        # zip 함수로 묶어서 넘기면 편함
-        context = {'p': p, 'finfo': zip(json.loads(p.fnames),range(5),
-                                        json.loads(p.fsizes), json.loads(p.fdowns))}
+        # 본문보기 처리시 본문내용과, 첨부한 이미지파일 정보를 넘김
+        ginfo = json.loads(g.fnames)
+        ginfo2 = zip(json.loads(g.fnames), json.loads(g.fsizes))
+        context = {'g': g, 'ginfo': ginfo, 'ginfo2': ginfo2}
         return render(request, 'gallery/view.html', context)
 
     def post(self, request):
         pass
+
+
+def process_image_files(fname, uuid, fpath):
+    # 업로드된 생성할 이미지를 불러옴
+    img = Image.open(fpath+uuid+fname)
+    print(img.width, img.height)
+
+    # 이미지 크기를 3등분해서 각 죄표 계산
+    startx = int(img.width / 3)
+    starty = int(img.height / 3)
+    x1 = startx
+    y1 = starty
+    x2 = startx * 2
+    y2 = starty * 2
+
+    # 지정한 영역으로 이미지를 잘라냄
+    # crop(시작x, 시작y, 끝x, 끝y)
+    cropimg = img.crop((x1, y1, x2, y2))
+
+    # 크롭한 이미지를 적당한 크기로 재조정
+    resizeimg = cropimg.resize((350, 350))
+
+    # 잘라낸 크롭 이미지를 저장함
+    resizeimg.save(fpath+'thumbs/'+uuid+fname)
 
 
 def process_upload_files(fnames, uuid):
@@ -72,6 +97,9 @@ def process_upload_files(fnames, uuid):
 
         # sizes[ix] = fsize #(단위는 B)
         sizes[ix] = f'{fsize/1024:,.1f}'  #(비로소 단위는 KB)
+        
+    # 업로드된 첫번째 이미지의 썸네일 생성
+    process_image_files(names[0], uuid, fpath)
     return names, sizes
 
 

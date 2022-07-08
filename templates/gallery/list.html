@@ -1,5 +1,7 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
+{% load jsonify %}
+
 {% block title %}게시판-본문보기 {% endblock %}
 
 {% block style %}
@@ -17,129 +19,43 @@
             <hr>
         </div>
 
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-sm-5 d-flex flex-row">
-                <select name="findtype" id="findtype" class="form-select findfrm">
+        <div class="row  mb-3">
+            <div class="col-sm-6 d-flex flex-row">
+                <select name="findtype" id="findtype" class="form-select w-25 findfrm">
                     <option value="title">제 &nbsp; 목</option>
                     <option value="userid">작성자</option>
                     <option value="contents">본 &nbsp; 문</option>
                 </select>&nbsp;
                 <input type="text" name="findkey" id="findkey"
-                       class="form-control findfrm2">&nbsp;
+                       class="form-control w-50 findfrm2">&nbsp;
                 <button type="button" class="btn btn-light">
                     <i class="bi bi-search"></i> 검색하기</button>
             </div>
-            <div class="col-sm-5 text-end">
+            <div class="col-sm-6 text-end">
                 <button type="button" class="btn btn-dark">
                     <i class="bi bi-plus-circle-fill"></i> 새글쓰기</button>
             </div>
-            <div class="col"></div>
         </div> <!-- // 검색, 새글쓰기 버튼 -->
-
-        <div class="row">
-            <div class="col-12">
-                <div class="row row-cols-1 row-cols-md-4">
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
-                    <div class="card ">
-                <img src="{% static 'imgs/caro01.webp' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text"><span style="float: left">abc123</span><span style="float: right">2022-07-07</span>
-                        <br><span style="float: right">조회수/추천수</span></p>
-                </div>
-                </div>
+        <div class="row row-cols-1 row-cols-md-4 g-3">
+            {% for g in gal %}
+            <div class="col">
+                <div class="card" >
+                    <a href="{% url 'gview' %}?gno={{ g.id }}">
+                        <img src="http://127.0.0.1/thumbs/{{ g.uuid }}{{ g.fnames|jsonify|first }}"
+                         class="card-img-top" alt="..."></a>
+                    <div class="card-body">
+                        <h5 class="card-title gtitle"><a href="{% url 'gview' %}?gno={{ g.id }}">{{ g.title }}</a></h5>
+                      <p class="card-text">
+                          <span style="float:left">{{ g.member.userid  }}</span>
+                          <span style="float:right">{{ g.regdate|date:'Y-m-d'   }}</span>
+                          <br><span style="float:right">{{ g.views }}/{{ g.thumbup }}</span> </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-n2">
+            {% endfor %}
+        </div><!-- // 갤러리 -->
+
+        <div class="row mt-2">
             <div class="col-12 mb-5">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
@@ -185,4 +101,6 @@
     </div> <!-- // main -->
 {% endblock %}
 {% block script %}
+
+</script>
 {% endblock %}
